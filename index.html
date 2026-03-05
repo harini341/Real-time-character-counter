@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Character Counter</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 120px;
+        }
+
+        #counter {
+            margin-top: 5px;
+        }
+
+        #warning {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Message Box</h2>
+    <p>200 characters max</p>
+
+    <textarea id="message" maxlength="200"></textarea>
+
+    <p id="counter">0 / 200 characters</p>
+    <p id="warning"></p>
+
+    <script>
+
+        let textarea = document.getElementById("message")
+        let counter = document.getElementById("counter")
+        let warning = document.getElementById("warning")
+
+        let maxLength = 200
+
+        textarea.addEventListener("input", function () {
+
+            let typed = textarea.value.length
+            let remaining = maxLength - typed
+
+            counter.textContent = typed + " / " + maxLength + " characters"
+
+            if (typed >= maxLength) {
+                warning.textContent = "Character limit reached!"
+            }
+            else {
+                warning.textContent = ""
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>
